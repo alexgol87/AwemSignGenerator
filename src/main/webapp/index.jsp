@@ -123,7 +123,7 @@
     <br/>
 </div>
 <br/>
-<h1>Fill this form to generate your personal e-mail sign:</h1>>
+<h3>Fill this form to generate your personal e-mail sign:</h3>
 <form action="index.jsp" method="post">
     First Name and Last Name: <input name="fullname" placeholder="Ivan Ivanov" required ize="40"
                                      value="<%= (request.getParameter("fullname") != null && request.getParameter("fullname").length() > 0) ? request.getParameter("fullname").trim() : "" %>"/> (*)
