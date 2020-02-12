@@ -39,7 +39,7 @@
                                     <td style="width:10px;padding-right:10px"><br><a href="http://awem.com/" rel="noopener noreferrer"
                                                                                      style="color:rgb(17,85,204)"
                                                                                      target="_blank"><img
-                                            src="https://d36urhup7zbd7q.cloudfront.net/6a7016a6-3c8d-40a2-aaaa-1e9db3ac45a8/full_color.crop_1473x858_270,0.preview.format_png.resize_200x.jpeg"
+                                            src="${pageContext.request.contextPath}/resources/awem_logo.png"
                                             width="94" height="55" alt="photo"
                                             style="border-radius:0px;margin-right:0px" class="CToWUd"></a>&nbsp;
                                     </td>
@@ -90,7 +90,7 @@
                                                                 <a href="<%= (request.getParameter("linkedin") != null && request.getParameter("linkedin").trim().length() > 0) ? request.getParameter("linkedin").trim() : "https://www.linkedin.com/in/ivanivanov/" %>"
                                                                    style="color:rgb(0,0,0)" target="_blank">
                                                                     <img alt="" width="23"
-                                                                         src="https://img.mysignature.io/s/v3/1/c/f/1cf4f75e-0587-53d9-923f-79472558d74f.png"
+                                                                         src="${pageContext.request.contextPath}/resources/linkedin_logo.png"
                                                                          style="width:23px" class="CToWUd"></a>
                                                             </c:if>
                                                             <c:if test="${param.skype == null || fn:length(fn:trim(param.skype)) > 0}">
@@ -98,7 +98,7 @@
                                                                    style="color:rgb(0,0,0)" target="_blank">
                                                                     <img alt=""
                                                                          width="23"
-                                                                         src="https://img.mysignature.io/s/v3/c/5/a/c5a3779b-cd33-5351-a3ba-6bc3e114fca9.png"
+                                                                         src="${pageContext.request.contextPath}/resources/skype_logo.png"
                                                                          style="width:23px"
                                                                          class="CToWUd"></a>&nbsp;
                                                             </c:if>
