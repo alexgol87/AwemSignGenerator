@@ -10,6 +10,7 @@ public class SignGenServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        if (req.getParameter("clearAll").equals("yes")) resp.sendRedirect("index.jsp");
+        else req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

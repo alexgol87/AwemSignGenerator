@@ -44,10 +44,10 @@
                                     <td style="font-stretch:normal;line-height:normal;text-align:initial;padding:0px 10px">
                                         <div style="margin-bottom:5px;margin-top:0px">
                                             <span style="font-family: sans-serif; ">
-                                                <b><%= request.getParameter("fullname") == null ? "Ivan Ivanov" : ((request.getParameter("fullname") != null && request.getParameter("fullname").trim().length() > 0) ? request.getParameter("fullname").trim() : "Enter your First Name and Last Name") %></b>
+                                                <b><%= request.getParameter("fullname") == null ? "Ivan Ivanov" : request.getParameter("fullname").trim() %></b>
                                             </span>
                                             <br><span
-                                                style="font-family: sans-serif; "><%= request.getParameter("position") == null ? "Manager" : ((request.getParameter("position") != null && request.getParameter("position").trim().length() > 0) ? request.getParameter("position").trim() : "Enter your Job Title from Bamboo HR") %></span><br>
+                                                style="font-family: sans-serif; "><%= request.getParameter("position") == null ? "Manager" : request.getParameter("position").trim() %></span><br>
                                         </div>
                                         <table width="470" border="0" cellspacing="0" cellpadding="0"
                                                style="font-family:sans-serif;width:470px;margin-top:5px">
@@ -56,14 +56,14 @@
                                                 <td><p style="margin:0px">
                                                     <span style="display:inline-block">
                                                         <span style="text-align:initial"><span style="color: #8d8d8d; ">
-                                                            <%= (request.getParameter("phone") != null) ? request.getParameter("phone").trim() : "+79012345678" %>
+                                                            <%= (request.getParameter("phone") == null) ? "+79012345678" : request.getParameter("phone").trim() %>
                                                             <c:if test="${param.phone == null || fn:length(fn:trim(param.phone)) > 0}">
                                                                 <br/>
                                                             </c:if>
                                                         </span></span>
-                                                        <a href="mailto:<%= request.getParameter("email") == null ? "ivan.ivanov@awem.com" : ((request.getParameter("email") != null && request.getParameter("email").trim().length() > 0) ? request.getParameter("email").trim() : "email@awem.com") %>"
+                                                        <a href="mailto:<%= request.getParameter("email") == null ? "ivan.ivanov@awem.com" : request.getParameter("email").trim() %>"
                                                            style="color:rgb(141,141,141);font-family:sans-serif"
-                                                           target="_blank"><%= request.getParameter("email") == null ? "ivan.ivanov@awem.com" : ((request.getParameter("email") != null && request.getParameter("email").trim().length() > 0) ? request.getParameter("email").trim() : "Enter_your_email@awem.com") %></a>
+                                                           target="_blank"><%= request.getParameter("email") == null ? "ivan.ivanov@awem.com" : request.getParameter("email").trim() %></a>
                                                     </span>
                                                 </p></td>
                                             </tr>
@@ -76,7 +76,7 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <c:if test="${(param.linkedin == null || fn:length(fn:trim(param.linkedin)) > 0) || (param.skype == null && fn:length(fn:trim(param.skype)) > 0)}">
+                                        <c:if test="${(param.linkedin == null || fn:length(fn:trim(param.linkedin)) > 0) || (param.skype == null || fn:length(fn:trim(param.skype)) > 0)}">
                                             <div style="font-family:sans-serif;margin-top:10px">
                                                 <table border="0" cellpadding="0" cellspacing="0">
                                                     <tbody>
@@ -120,7 +120,7 @@
     <br/>
 </div>
 <br/>
-<form action="index.jsp" method="post" class="contact_form" id="signForm">
+<form action="" method="post" class="contact_form" name="signForm">
     <ul>
         <li>
             <h2>Fill this form to generate your personal e-mail sign</h2>
@@ -165,13 +165,17 @@
         <li>
             <button type="submit" class="submit">Generate Awemsome Sign</button>
             <c:if test="${not empty param.fullname && not empty param.position && not empty param.email}">
-                &nbsp;<button class="submit" onclick="copyElementToClipboard('awem_sign')">Copy to Clipboard</button>
+            &nbsp;<button class="submit" onclick="copyElementToClipboard('awem_sign')">Copy to Clipboard</button>
             </c:if>
-        </li>
-        <li>
-            <a href=""><button class="submit">Clear all</button></a>
-        </li>
-    </ul>
 </form>
+</li>
+<li>
+    <form action="" method="post" name="clearForm">
+        <input type="hidden" name="clearAll" value="yes">
+        <button type="submit" class="submit">Clear all</button>
+    </form>
+</li>
+</ul>
+
 </body>
 </html>
