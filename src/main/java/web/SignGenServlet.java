@@ -10,7 +10,6 @@ public class SignGenServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("awem_logo", "resources/awem_logo.png");
-        req.getRequestDispatcher("sign.jsp").forward(req, resp);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

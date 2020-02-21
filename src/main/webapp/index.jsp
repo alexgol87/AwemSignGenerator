@@ -16,11 +16,7 @@
             window.getSelection().removeAllRanges();
         }
     </script>
-    <style>
-        .awemlink {
-            color: #1eb6ed !important;
-        }
-    </style>
+    <link rel="stylesheet" media="screen" href="resources/styles.css">
 </head>
 <body>
 <div dir="ltr" id="awem_sign">
@@ -36,7 +32,8 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                 <tr style="padding-top:10px">
-                                    <td style="width:10px;padding-right:10px"><br><a href="http://awem.com/" rel="noopener noreferrer"
+                                    <td style="width:10px;padding-right:10px"><br><a href="http://awem.com/"
+                                                                                     rel="noopener noreferrer"
                                                                                      style="color:rgb(17,85,204)"
                                                                                      target="_blank"><img
                                             src="${pageContext.request.contextPath}/resources/awem_logo.png"
@@ -123,34 +120,58 @@
     <br/>
 </div>
 <br/>
-<h3>Fill this form to generate your personal e-mail sign:</h3>
-<form action="index.jsp" method="post">
-    First Name and Last Name: <input name="fullname" placeholder="Ivan Ivanov" required ize="40"
-                                     value="<%= (request.getParameter("fullname") != null && request.getParameter("fullname").length() > 0) ? request.getParameter("fullname").trim() : "" %>"/> (*)
-    <br/><br/>
-    Job Title from <a href="https://awem.bamboohr.com/employees/" target="_blank" class="awemlink" rel="noopener noreferrer">Bamboo HR</a>: <input
-        name="position" placeholder="Manager" required size="40"
-        value="<%= (request.getParameter("position") != null && request.getParameter("position").length() > 0) ? request.getParameter("position").trim() : ""  %>"/> (*)
-    <br/><br/>
-    Phone Number: <input name="phone" placeholder="+12345678900"
-                         value="<%= (request.getParameter("phone") != null && request.getParameter("phone").length() > 0) ? request.getParameter("phone").trim() : "" %>"/>
-    <br/><br/>
-    E-mail: <input name="email" type="email" placeholder="ivan.ivanov@awem.com" required size="40"
-                   value="<%= (request.getParameter("email") != null && request.getParameter("email").length() > 0) ? request.getParameter("email").trim() : "" %>"/> (*)
-    <br/><br/>
-    <a href="https://www.linkedin.com/in/" target="_blank" class="awemlink" rel="noopener noreferrer">LinkedIn Profile</a> Link: <input
-        name="linkedin" type="url" placeholder="https://www.linkedin.com/in/ivan.ivanov" size="40"
-        value="<%= (request.getParameter("linkedin") != null && request.getParameter("linkedin").length() > 0) ? request.getParameter("linkedin").trim() : "" %>"/>
-    <br/><br/>
-    Skype Username: <input name="skype" placeholder="ivan.ivanov" size="40"
-                           value="<%= (request.getParameter("skype") != null && request.getParameter("skype").length() > 0) ? request.getParameter("skype").trim() : "" %>"/>
-    <br/><br/><br/>
-    <input type="submit" value="Generate Awemsome Sign!"/>
-    <c:if test="${not empty param.fullname && not empty param.position && not empty param.email}">
-        &nbsp;<input type="button" value="Copy to Clipboard" onclick="copyElementToClipboard('awem_sign')" style="background-color:#1eb6ed;color:#ffffff;">
-    </c:if>
-    <br/><br/>
-    <a href=""><input type="button" value="Clear all"></a>
+<form action="index.jsp" method="post" class="contact_form" id="signForm">
+    <ul>
+        <li>
+            <h2>Fill this form to generate your personal e-mail sign</h2>
+            <span class="required_notification">* Denotes Required Field</span>
+        </li>
+        <li>
+            <label for="fullname">First Name and Last Name:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Ivan Ivanov" required
+                   value="<%= (request.getParameter("fullname") != null && request.getParameter("fullname").length() > 0) ? request.getParameter("fullname").trim() : "" %>"/>
+        </li>
+        <li>
+            <label for="position">Job Title from <a href="https://awem.bamboohr.com/employees/" target="_blank"
+                                                    class="awemlink"
+                                                    rel="noopener noreferrer">Bamboo HR</a>:</label>
+            <input id="position" name="position" placeholder="Manager" required
+                   value="<%= (request.getParameter("position") != null && request.getParameter("position").length() > 0) ? request.getParameter("position").trim() : ""  %>"/>
+        </li>
+        <li>
+            <label for="phone">Phone Number:</label>
+            <input id="phone" name="phone" placeholder="+12345678900"
+                   value="<%= (request.getParameter("phone") != null && request.getParameter("phone").length() > 0) ? request.getParameter("phone").trim() : "" %>"/>
+        </li>
+        <li>
+            <label for="email">E-mail:</label>
+            <input id="email" name="email" type="email" placeholder="ivan.ivanov@awem.com" required
+                   value="<%= (request.getParameter("email") != null && request.getParameter("email").length() > 0) ? request.getParameter("email").trim() : "" %>"/>
+        </li>
+        <li>
+            <label for="linkedin"><a href="https://www.linkedin.com/in/" target="_blank" class="awemlink"
+                                     rel="noopener noreferrer">LinkedIn
+                Profile</a> Link:</label>
+            <input
+                    id="linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/ivan.ivanov"
+                    pattern="(http|https)://.+"
+                    value="<%= (request.getParameter("linkedin") != null && request.getParameter("linkedin").length() > 0) ? request.getParameter("linkedin").trim() : "" %>"/>
+        </li>
+        <li>
+            <label for="skype">Skype Username:</label>
+            <input id="skype" name="skype" placeholder="ivan.ivanov"
+                   value="<%= (request.getParameter("skype") != null && request.getParameter("skype").length() > 0) ? request.getParameter("skype").trim() : "" %>"/>
+        </li>
+        <li>
+            <button type="submit" class="submit">Generate Awemsome Sign</button>
+            <c:if test="${not empty param.fullname && not empty param.position && not empty param.email}">
+                &nbsp;<button class="submit" onclick="copyElementToClipboard('awem_sign')">Copy to Clipboard</button>
+            </c:if>
+        </li>
+        <li>
+            <a href=""><button class="submit">Clear all</button></a>
+        </li>
+    </ul>
 </form>
 </body>
 </html>
