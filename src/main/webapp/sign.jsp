@@ -17,7 +17,7 @@
             window.getSelection().removeAllRanges();
         }
     </script>
-    <link rel="stylesheet" media="screen" href="resources/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/styles.css">
 </head>
 <body>
 <div dir="ltr" id="awem_sign">

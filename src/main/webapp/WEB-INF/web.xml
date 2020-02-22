@@ -8,7 +8,7 @@
     <servlet>
         <servlet-name>SignGenServlet</servlet-name>
         <servlet-class>web.SignGenServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignGenServlet</servlet-name>
@@ -37,7 +37,7 @@
 
     <filter-mapping>
         <filter-name>CharsetFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/sign.jsp</url-pattern>
     </filter-mapping>
 
 </web-app>
