@@ -92,7 +92,7 @@
                                                                          style="width:23px" class="CToWUd"></a>
                                                             </c:if>
                                                             <c:if test="${param.skype == null || fn:length(fn:trim(param.skype)) > 0}">
-                                                                <a href="skype:<%= (request.getParameter("skype") != null && request.getParameter("skype").trim().length() > 0) ? request.getParameter("skype").trim() : "ivan.ivanov" %>?chat"
+                                                                <a href="<%= (request.getParameter("skype") != null && request.getParameter("skype").trim().length() > 0) ? request.getParameter("skype").trim() : "https://join.skype.com/invite/pM4YLu3LjCcK" %>"
                                                                    style="color:rgb(0,0,0)" target="_blank">
                                                                     <img alt=""
                                                                          width="23"
@@ -159,8 +159,11 @@
                     value="<%= (request.getParameter("linkedin") != null && request.getParameter("linkedin").length() > 0) ? request.getParameter("linkedin").trim() : "" %>"/>
         </li>
         <li>
-            <label for="skype">Skype Username:</label>
-            <input id="skype" name="skype" placeholder="ivan.ivanov"
+            <label for="skype">Skype <a
+                    href="https://support.skype.com/en/faq/FA34802/how-do-i-invite-someone-to-chat-in-skype-on-desktop?q=profile+link"
+                    target="_blank" class="awemlink" rel="noopener noreferrer">invitation link</a>:</label>
+            <input id="skype" name="skype" placeholder="https://join.skype.com/invite/pM4YLu3LjCcK"
+                   pattern="(http|https)://join.skype.com/invite/.+"
                    value="<%= (request.getParameter("skype") != null && request.getParameter("skype").length() > 0) ? request.getParameter("skype").trim() : "" %>"/>
         </li>
         <li>
