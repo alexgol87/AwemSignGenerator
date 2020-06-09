@@ -1,4 +1,4 @@
-# AwemSignGenerator
+# SignGenerator
 
 2020-02: v1.0 Manual generation of e-mail signature with UTF-8 support 
 
@@ -16,6 +16,6 @@
 
 ## Authors
 
-* Creator **Aleksey Golovachev** - [AwemSignGenerator](https://github.com/alexgol87/AwemSignGenerator/)
+* Creator **Aleksey Golovachev** - [SignGenerator](https://github.com/alexgol87/SignGenerator/)
 
 Inspired by Tanka Gnidenko and [MySignature](https://mysignature.io/)
